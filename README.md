@@ -1,5 +1,7 @@
 # AnalisadorSintacticoS4
 
+**Autor:** Frannie Fermin 1-16-0408 \
+\
 Este analizador sintáctico abrirá la terminal y en él podrás realizar cálculos aritméticos
 
 ### Que puede hacer:
