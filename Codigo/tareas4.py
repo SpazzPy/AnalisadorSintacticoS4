@@ -82,16 +82,22 @@ def p_unary_implicit_mult(p):
     p[0] = int(p[1]) * p[3]
 
 def p_error(p):
-    print(f"Error de sintaxis en la entrada {p}")
+    if p:
+        print(f"Error de sintaxis en la entrada {p.value}")
+    else:
+        print("Error de sintaxis en la entrada desconocida")
 
 parser = yacc.yacc()
 
 while True:
     try:
         s = input('calcular: ')
-    except EOFError:
+        if not s:
+            continue
+        result = parser.parse(s)
+        if result is not None:
+            print(result)
+    except (EOFError, SystemExit):
         break
-    if not s:
-        continue
-    result = parser.parse(s)
-    print(result)
+    except Exception as e:
+        print(f"Error: {e}")
